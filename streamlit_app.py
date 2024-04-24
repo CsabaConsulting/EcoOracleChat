@@ -32,7 +32,7 @@ if "past" not in st.session_state:
 if "session_id" not in st.session_state:
     st.session_state.session_id = str(uuid.uuid4())
 
-def process_user_input(query):
+def process_user_input(query=None):
     user_input = query if query else st.session_state.user_input
     st.session_state.past.append(user_input)
     payload = {
