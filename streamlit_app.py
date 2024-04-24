@@ -45,7 +45,7 @@ def process_user_input(query):
     request.add_header('Content-Type', 'application/json')
     with urllib.request.urlopen(request) as response:
         agent_response = response.read().decode('utf-8')
-        st.session_state.generated.append(agent_response)
+        st.session_state.generated.append({'type': 'normal', 'data': agent_response})
 
 def clear_chat():
     del st.session_state.past[:]
