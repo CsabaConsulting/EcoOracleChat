@@ -47,15 +47,11 @@ def process_user_input(query=None):
         agent_response = response.read().decode('utf-8')
         st.session_state.generated.append({'type': 'normal', 'data': agent_response})
 
-def clear_chat():
+def new_session():
     del st.session_state.past[:]
     del st.session_state.generated[:]
     session_id = str(uuid.uuid4())
     st.session_state.session_id = session_id
-
-# clear_button = st.sidebar.button("Clear Conversation", key="clear")
-# if clear_button:
-#     clear_chat()
 
 st.sidebar.write("Example prompts:")
 
@@ -90,7 +86,7 @@ with chat_placeholder.container():
             is_table=True if st.session_state['generated'][i]['type']=='table' else False
         )
 
-    st.button("Clear message", on_click=clear_chat)
+    st.button("New Conversation", on_click=new_session)
 
 with st.container():
     st.text_input("User Input:", on_change=process_user_input, key="user_input")
