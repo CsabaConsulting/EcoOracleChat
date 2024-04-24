@@ -66,17 +66,17 @@ example_button1 = st.sidebar.button("What are Sustainable Development Goals?")
 if example_button1:
     process_user_input("What are Sustainable Development Goals?")
 
-example_button2 = st.sidebar.button("Which is the SDG Goal 5?")
+example_button2 = st.sidebar.button("Which is the Sustainable Development Goal 5?")
 if example_button2:
-    process_user_input("Which is the SDG Goal 5?")
+    process_user_input("Which is the Sustainable DevelopmentGoal 5?")
 
-example_button3 = st.sidebar.button("What is the SDG Goal 5 about?")
+example_button3 = st.sidebar.button("What is the Sustainable Development Goal 5 about?")
 if example_button3:
-    process_user_input("What is the SDG Goal 5 about?")
+    process_user_input("What is the Sustainable Development Goal 5 about?")
 
-example_button4 = st.sidebar.button("Tell me an interesting fact about an SDG")
+example_button4 = st.sidebar.button("Tell me an interesting fact about any Sustainable Development Goal of your choice")
 if example_button4:
-    process_user_input("Tell me an interesting fact about an SDG")
+    process_user_input("Tell me an interesting fact about any any Sustainable Development Goal of your choice")
 
 chat_placeholder = st.empty()
 
