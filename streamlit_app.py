@@ -50,6 +50,7 @@ def process_user_input(query=None):
 def new_session():
     del st.session_state.past[:]
     del st.session_state.generated[:]
+    st.session_state["user_input"] = ""
     session_id = str(uuid.uuid4())
     st.session_state.session_id = session_id
 
