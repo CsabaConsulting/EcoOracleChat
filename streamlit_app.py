@@ -34,6 +34,7 @@ if "session_id" not in st.session_state:
 
 def process_user_input(query=None):
     user_input = query if query else st.session_state.user_input
+    st.session_state["user_input"] = ""
     st.session_state.past.append(user_input)
     payload = {
         'token': sl_token,
