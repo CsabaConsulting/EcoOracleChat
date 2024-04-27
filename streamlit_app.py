@@ -18,9 +18,17 @@ sl_token = os.getenv("SL_TOKEN")
 if not sl_token:
     sl_token = st.secrets["SL_TOKEN"]
 
-agent_url = os.getenv("AGENT_URL")
-if not agent_url:
-    agent_url = st.secrets["AGENT_URL"]
+agent_function_url = os.getenv("AGENT_FUNCTION")
+if not agent_function_url:
+    agent_function_url = st.secrets["AGENT_FUNCTION"]
+
+agent_id = os.getenv("AGENT_ID")
+if not agent_id:
+    agent_id = st.secrets["AGENT_ID"]
+
+language_code = os.getenv("LANGUAGE_CODE")
+if not language_code:
+    language_code = st.secrets["LANGUAGE_CODE"]
 
 # Initialise session state variables
 if "generated" not in st.session_state:
@@ -38,11 +46,13 @@ def process_user_input(query=None):
     st.session_state.past.append(user_input)
     payload = {
         'token': sl_token,
+        'agent_id': agent_id,
         'session_id': st.session_state.session_id,
-        'query': user_input
+        'query': user_input,
+        'language_code': language_code
     }
     json_data = json.dumps(payload).encode('utf-8')
-    request = urllib.request.Request(agent_url, data=json_data, method='POST')
+    request = urllib.request.Request(agent_function_url, data=json_data, method='POST')
     request.add_header('Content-Type', 'application/json')
     with urllib.request.urlopen(request) as response:
         agent_response = response.read().decode('utf-8')
