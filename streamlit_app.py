@@ -18,9 +18,9 @@ sl_token = os.getenv("SL_TOKEN")
 if not sl_token:
     sl_token = st.secrets["SL_TOKEN"]
 
-agent_function_url = os.getenv("AGENT_FUNCTION")
+agent_function_url = os.getenv("AGENT_FUNCTION_URL")
 if not agent_function_url:
-    agent_function_url = st.secrets["AGENT_FUNCTION"]
+    agent_function_url = st.secrets["AGENT_FUNCTION_URL"]
 
 agent_id = os.getenv("AGENT_ID")
 if not agent_id:
