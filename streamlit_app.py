@@ -30,6 +30,10 @@ language_code = os.getenv("LANGUAGE_CODE")
 if not language_code:
     language_code = st.secrets["LANGUAGE_CODE"]
 
+location_id = os.getenv("LOCATION_ID")
+if not location_id:
+    location_id = st.secrets["LOCATION_ID"]
+
 # Initialise session state variables
 if "generated" not in st.session_state:
     st.session_state["generated"] = []
@@ -49,7 +53,8 @@ def process_user_input(query=None):
         'agent_id': agent_id,
         'session_id': st.session_state.session_id,
         'query': user_input,
-        'language_code': language_code
+        'language_code': language_code,
+        'location_id': location_id
     }
     json_data = json.dumps(payload).encode('utf-8')
     request = urllib.request.Request(agent_function_url, data=json_data, method='POST')
