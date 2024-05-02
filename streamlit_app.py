@@ -34,6 +34,10 @@ location_id = os.getenv("LOCATION_ID")
 if not location_id:
     location_id = st.secrets["LOCATION_ID"]
 
+trivia_process = os.getenv("TRIVIA_PROCESS")
+if not trivia_process:
+    trivia_process = st.secrets["TRIVIA_PROCESS"]
+
 # Initialise session state variables
 if "generated" not in st.session_state:
     st.session_state["generated"] = []
@@ -55,7 +59,7 @@ def process_user_input(query=None):
         'query': user_input,
         'language_code': language_code,
         'location_id': location_id,
-        'trivia_process': False
+        'trivia_process': trivia_process
     }
     json_data = json.dumps(payload).encode('utf-8')
     request = urllib.request.Request(agent_function_url, data=json_data, method='POST')
