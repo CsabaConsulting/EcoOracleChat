@@ -54,7 +54,8 @@ def process_user_input(query=None):
         'session_id': st.session_state.session_id,
         'query': user_input,
         'language_code': language_code,
-        'location_id': location_id
+        'location_id': location_id,
+        'trivia_process': False
     }
     json_data = json.dumps(payload).encode('utf-8')
     request = urllib.request.Request(agent_function_url, data=json_data, method='POST')
